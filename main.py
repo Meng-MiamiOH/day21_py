@@ -1,8 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+import plotly
+import json
 import plotly.graph_objects as go
+from plotly.graph_objs import *
+from plotly.subplots import make_subplots
 import pandas as pd
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates")
 
 @app.route("/")
 def homepage():
@@ -45,12 +49,14 @@ def doc(path):
         )
     )
 
-    fig.show()
-    return render_template("page.html", title=path)
-
-@app.route("/about")
-def about():
-    return render_template("page.html", title="about page")
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    header = "Stat"
+    description = """
+    21天成长挑战
+    """
+    return render_template(
+        "page.html", graphJSON=graphJSON, header=header, description=description
+    )
 
 if __name__ == "__main__":
     app.run(debug=False)

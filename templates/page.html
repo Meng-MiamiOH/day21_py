@@ -1,26 +1,55 @@
-<html>
+<html lang="en">
 
 <head>
-    <title>Sample app</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{header}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 
 <body>
-    <p><a href="/haoxiang" target="_blank">张昊翔</a></p>
-    <p><a href="/mengqu" target="_blank">曲梦</a></p>
-    <p><a href="/sophie" target="_blank">唐纪炫</a></p>
-    <p><a href="/polly" target="_blank">彭昊洋</a></p>
-    <p><a href="/yue" target="_blank">高玥</a></p>
-    <p><a href="/juliedou" target="_blank">窦心怡</a></p>
-    <p><a href="/jian" target="_blank">刘简</a></p>
-    <p><a href="/jackie" target="_blank">周煜朋</a></p>
-    <p><a href="/jianze" target="_blank">武建泽</a></p>
-    <p><a href="/lynn">陆屹灵</a></p>
-    <p><a href="/bochuan">于博川</a></p>
-    <p><a href="/kevin">任梓闻</a></p>
-    <p><a href="/chenghao">娄程皓</a></p>
-    <p><a href="/yingjie">崔英杰</a></p>
-    <p><a href="/michelle">冯怡琳</a></p>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">21天成长挑战</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/haoxiang">张昊翔</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/mengqu">曲梦</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/sophie">唐纪炫</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/polly">彭昊洋</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/yue">高玥</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/juliedou">窦心怡</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/jian">刘简</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/jackie">周煜朋</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/jianze">武建泽</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/lynn">陆屹灵</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/bochuan">于博川</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/kevin">任梓闻</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/chenghao">娄程皓</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/yingjie">崔英杰</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/michelle">冯怡琳</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="chart" class="chart"></div>
+    <div>{{description}}</div>
 </body>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+    var graphs = {{ graphJSON | safe }};
+    Plotly.plot('chart', graphs, {});          
+</script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
 
 </html>
