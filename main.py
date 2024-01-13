@@ -17,7 +17,7 @@ def doc(path):
             x=df['date'],
             y=df['time'],
             name="Time",
-            marker=dict(color="paleturquoise"),
+            marker=dict(color="#a7d5ed"),
         )
     )
 
@@ -27,12 +27,12 @@ def doc(path):
             y=df['score'],
             yaxis="y2",
             name="Scores",
-            marker=dict(color="crimson"),
+            marker=dict(color="#e14b31"),
         )
     )
 
     fig.update_layout(
-        title=path,
+        title=path.capitalize(),
         legend=dict(orientation="h"),
         yaxis=dict(
             title=dict(text="time"),
