@@ -46,13 +46,14 @@ def doc(path):
             title=dict(text="scores"),
             side="right",
             overlaying="y",
+            range=[-0.5, 5.5],
         )
     )
 
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    header = "Stat"
+    header = path
     description = """
-    21天成长挑战
+
     """
     return render_template(
         "page.html", graphJSON=graphJSON, header=header, description=description
