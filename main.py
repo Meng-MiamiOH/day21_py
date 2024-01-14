@@ -47,6 +47,23 @@ def doc(path):
             side="right",
             overlaying="y",
             range=[-0.5, 5.5],
+        ),
+        xaxis=dict(
+            rangeselector=dict(
+                buttons=list([
+                    dict(count=7,
+                        label="7days",
+                        step="day",
+                        stepmode="backward"),
+                    dict(count=14,
+                        label="14days",
+                        step="day",
+                        stepmode="backward"),
+                ])
+            ),
+            rangeslider=dict(
+                visible=True
+            ),
         )
     )
 
